@@ -1750,7 +1750,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff93;
+  background: #0f13f1;
 }
 .feed-link,
 .chat {
@@ -2458,4 +2458,10 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
+}
+.headband {
+  background-color: #800080;
+}
+.brand {
+  background-color: #800080;
 }
