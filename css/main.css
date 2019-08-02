@@ -1750,7 +1750,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b045ff;
+  background: #36bead;
 }
 .feed-link,
 .chat {
@@ -2459,9 +2459,33 @@ embed {
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
 }
+<link href="https://fonts.googleapis.com/css?family=Crimson+Prodisplay=swap"rel="stylesheet">,
 .headband {
-  background-color: #800080;
+  background-color: #333;
 }
 .brand {
-  background-color: #800080;
+  background-color: #333;
+}
+.main-inner {
+  width: 25em;
+}
+.post-header .post-title-link {
+  font-family: 'Crimson Pro', serif;
+  color: #333;
+  font-size: 2em;
+}
+.post-title-link span {
+  color: #333;
+  font-size: 1em;
+}
+.post-body {
+  overflow-wrap: break-word;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  font-family: 'Crimson Pro', serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.4em;
 }
