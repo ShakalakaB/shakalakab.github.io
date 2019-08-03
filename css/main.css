@@ -1750,7 +1750,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6effff;
+  background: #b6b593;
 }
 .feed-link,
 .chat {
@@ -2485,8 +2485,8 @@ embed {
   color: #333;
   font-size: 1em;
 }
-.post-body {
-  overflow-wrap: break-word;
+.posts-expand .post-body {
+  text-align: left;
   overflow-wrap: break-word;
   word-wrap: break-word;
   font-family: 'Crimson Pro', serif;
