@@ -1750,7 +1750,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #36bead;
+  background: #6effff;
 }
 .feed-link,
 .chat {
@@ -2465,6 +2465,13 @@ embed {
 }
 .brand {
   background-color: #333;
+}
+.menu .menu-item a {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.menu-item-icon::before {
+  font-size: 2em;
 }
 .main-inner {
   width: 25em;
