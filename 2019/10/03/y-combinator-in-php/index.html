@@ -94,18 +94,21 @@
 
 
 
-  <meta name="description" content="基础知识查询   w3school PHP tutorial   PHP官方文档    入门教程  PHP 101: PHP For the Absolute Beginner  覆盖PHP基础知识点，并将其融会贯通,适合初学者跟随学习。 入门练习项目  项目描述  通过PHP完成基本对MySQL 增删改查操作。 在不参考其具体执行代码的情况下，观察’output’部分的完成效果（忽略页面的css">
+  <meta name="description" content="Intro for Y-CombinatorWarn Up12345678910111213&amp;lt;?phpfunction Y($F) &amp;#123;    return $F(&amp;apos;Department B&amp;apos;);&amp;#125;$test = Y(function ($item) &amp;#123;    return function ($value) use ($item) &amp;#123">
 <meta name="keywords" content="blog&#x2F; life &#x2F; beauty">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP Guide for Beginners">
-<meta property="og:url" content="http://yoursite.com/2019/08/21/php-guide-for-beginners/index.html">
+<meta property="og:title" content="Y-Combinator in PHP">
+<meta property="og:url" content="http://yoursite.com/2019/10/03/y-combinator-in-php/index.html">
 <meta property="og:site_name" content="ShakalakaB Blog">
-<meta property="og:description" content="基础知识查询   w3school PHP tutorial   PHP官方文档    入门教程  PHP 101: PHP For the Absolute Beginner  覆盖PHP基础知识点，并将其融会贯通,适合初学者跟随学习。 入门练习项目  项目描述  通过PHP完成基本对MySQL 增删改查操作。 在不参考其具体执行代码的情况下，观察’output’部分的完成效果（忽略页面的css">
+<meta property="og:description" content="Intro for Y-CombinatorWarn Up12345678910111213&amp;lt;?phpfunction Y($F) &amp;#123;    return $F(&amp;apos;Department B&amp;apos;);&amp;#125;$test = Y(function ($item) &amp;#123;    return function ($value) use ($item) &amp;#123">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-26T02:10:23.165Z">
+<meta property="og:image" content="http://yoursite.com/images/Y_Combinator_20191003.png">
+<meta property="og:image" content="http://yoursite.com/images/execution_of_Y_Combinator_20191003.png">
+<meta property="og:updated_time" content="2019-10-03T12:08:57.598Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP Guide for Beginners">
-<meta name="twitter:description" content="基础知识查询   w3school PHP tutorial   PHP官方文档    入门教程  PHP 101: PHP For the Absolute Beginner  覆盖PHP基础知识点，并将其融会贯通,适合初学者跟随学习。 入门练习项目  项目描述  通过PHP完成基本对MySQL 增删改查操作。 在不参考其具体执行代码的情况下，观察’output’部分的完成效果（忽略页面的css">
+<meta name="twitter:title" content="Y-Combinator in PHP">
+<meta name="twitter:description" content="Intro for Y-CombinatorWarn Up12345678910111213&amp;lt;?phpfunction Y($F) &amp;#123;    return $F(&amp;apos;Department B&amp;apos;);&amp;#125;$test = Y(function ($item) &amp;#123;    return function ($value) use ($item) &amp;#123">
+<meta name="twitter:image" content="http://yoursite.com/images/Y_Combinator_20191003.png">
 
 
 
@@ -113,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/21/php-guide-for-beginners/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/03/y-combinator-in-php/">
 
 
 
@@ -123,7 +126,7 @@
   };
 </script>
 
-  <title>PHP Guide for Beginners | ShakalakaB Blog</title>
+  <title>Y-Combinator in PHP | ShakalakaB Blog</title>
   
 
 
@@ -290,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/php-guide-for-beginners/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/y-combinator-in-php/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShakalakaB">
@@ -307,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PHP Guide for Beginners
+          <h1 class="post-title" itemprop="name headline">Y-Combinator in PHP
 
               
             
@@ -333,23 +336,13 @@
                 
               
 
-              <time title="Created: 2019-08-21 15:16:53" itemprop="dateCreated datePublished" datetime="2019-08-21T15:16:53+08:00">2019-08-21</time>
+              <time title="Created: 2019-10-03 16:17:13 / Modified: 20:08:57" itemprop="dateCreated datePublished" datetime="2019-10-03T16:17:13+08:00">2019-10-03</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-08-26 10:10:23" itemprop="dateModified" datetime="2019-08-26T10:10:23+08:00">2019-08-26</time>
-              </span>
             
           
 
@@ -385,76 +378,18 @@
       
 
       
-        <p><strong>基础知识查询</strong> </p>
-<ul>
-<li><p><a href="https://www.w3schools.com/php/default.asp" target="_blank" rel="noopener">w3school PHP tutorial</a> </p>
-</li>
-<li><p><a href="https://www.php.net/docs.php" target="_blank" rel="noopener">PHP官方文档</a> </p>
-</li>
-</ul>
-<p><strong>入门教程</strong></p>
-<ul>
-<li><a href="https://devzone.zend.com/6/php-101-php-for-the-absolute-beginner/" target="_blank" rel="noopener">PHP 101: PHP For the Absolute Beginner</a></li>
-</ul>
-<p>覆盖PHP基础知识点，并将其融会贯通,适合初学者跟随学习。</p>
-<p><strong>入门练习项目</strong></p>
-<ul>
-<li><a href="https://www.codeofaninja.com/2017/02/create-simple-rest-api-in-php.html" target="_blank" rel="noopener">项目描述</a></li>
-</ul>
-<p>通过PHP完成基本对MySQL 增删改查操作。</p>
-<p>在不参考其具体执行代码的情况下，观察’output’部分的完成效果（忽略页面的css, bootstrap实现效果），独立实现同等功能。</p>
-<p><strong>Bonus Point</strong></p>
-<ul>
-<li><p>MySQL 索引， 子查询， 连表查询学习；</p>
-</li>
-<li><p>PHP class学习，抽象类，继承类，接口， trait等；</p>
-</li>
-</ul>
-<p>推荐安装环境: Homestead</p>
-<p>建议完成时间： 以上8-10天左右；</p>
-<hr>
-<p><strong>Lavarel 框架学习</strong></p>
-<p><a href="https://laravel.com/docs/5.8" target="_blank" rel="noopener">Laravel 官方文档</a></p>
-<p><strong>Lavarel 练习项目</strong></p>
-<p>通过Laravel 再次实现入门阶段练习项目</p>
-<p>建议完成时间： 以上7-8天左右；</p>
-<hr>
-<p><strong>Fastd 框架学习</strong></p>
-<p><a href="https://fastdlabs.com/#/" target="_blank" rel="noopener">Fastd 文档</a></p>
-<p><strong>Fastd 练习项目</strong></p>
-<p>通过Fastd 再次实现入门阶段练习项目</p>
-<p>建议完成时间： 以上5天左右；</p>
-<hr>
-<p><strong>PHP 设计模式</strong></p>
-<ul>
-<li><p>推荐资料： <a href="https://refactoring.guru/design-patterns/catalog" target="_blank" rel="noopener">Refactoring.Guru</a></p>
-</li>
-<li><p>重点掌握： 单例， 组合， 工厂， 订阅发布</p>
-</li>
-</ul>
-<p>建议完成时间： 以上2天左右；</p>
-<hr>
-<p><strong>编程辅助知识学习</strong></p>
-<ul>
-<li><p>Linux基础命令学习， 推荐资料： <a href="http://happypeter.github.io/LGCB/book/" target="_blank" rel="noopener">Linux基础命令教程</a>, <a href="http://linuxcommand.org/" target="_blank" rel="noopener">Linux教程</a></p>
-</li>
-<li><p>Git学习</p>
-</li>
-<li><p>Http 基础知识学习， 诸如 get, post, put, delete等</p>
-</li>
-<li><p>composer，如 <code>composer require ...</code>, <code>composer install</code>等</p>
-</li>
-<li><p>后端缓存学习， 安装redis客户端，学习redis数据类型，基本操作</p>
-</li>
-<li><p>Nginx学习</p>
-</li>
-<li><p>Swoole学习</p>
-</li>
-<li><p>阿里云操作后台及产品熟悉</p>
-</li>
-<li><p>内部工具了解， 如 piplin, jenkins, kong, zookeeper, git-cli等</p>
-</li>
-</ul>
+        <h3 id="Intro-for-Y-Combinator"><a href="#Intro-for-Y-Combinator" class="headerlink" title="Intro for Y-Combinator"></a><a href="https://mvanier.livejournal.com/2897.html" target="_blank" rel="noopener">Intro for Y-Combinator</a></h3><h3 id="Warn-Up"><a href="#Warn-Up" class="headerlink" title="Warn Up"></a>Warn Up</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">function Y($F) &#123;</span><br><span class="line">    return $F(&apos;Department B&apos;);</span><br><span class="line">&#125;</span><br><span class="line">$test = Y(function ($item) &#123;</span><br><span class="line">    return function ($value) use ($item) &#123;</span><br><span class="line">        echo &apos;value: &apos; . $value . &apos; is inside &apos; . $item . &quot;\n&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$test(&apos;Department A&apos;); // &apos;value: Department A is inside Department B&apos;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Explaination:</p>
+<p><code>$test(&#39;Department A&#39;)</code> -&gt; </p>
+<p><code>func Y($F)(&#39;Department A&#39;)</code> -&gt; </p>
+<p><code>$F(&#39;Department B&#39;)(&#39;Department A&#39;)</code> -&gt;</p>
+<p><code>func($item){...}(&#39;Department B&#39;)(&#39;Department A&#39;)</code> -&gt;</p>
+<p><code>func ($value) use (&#39;Department B&#39;) {...} (&#39;Department A&#39;)</code> -&gt;</p>
+<p><code>func (&#39;Department A&#39;) use (&#39;Department B&#39;) {...}</code></p>
+<h3 id="Y-Combinator"><a href="#Y-Combinator" class="headerlink" title="Y-Combinator"></a>Y-Combinator</h3><h4 id="Origin-Code"><a href="#Origin-Code" class="headerlink" title="Origin Code"></a><a href="https://php100.wordpress.com/2009/04/13/php-y-combinator/" target="_blank" rel="noopener">Origin Code</a></h4><h4 id="The-Execution-Process-for-fractorial-3"><a href="#The-Execution-Process-for-fractorial-3" class="headerlink" title="The Execution Process for $fractorial(3)"></a>The Execution Process for <code>$fractorial(3)</code></h4><p>只有当 function被输入parameter时，func才开始执行、才开始进入 {}中，否则就不执行func</p>
+<p><img src="/images/Y_Combinator_20191003.png" alt="Note for Code"></p>
+<p><img src="/images/execution_of_Y_Combinator_20191003.png" alt="Execution Process"></p>
 
       
     </div>
@@ -485,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/29/note-about-practive-project-static-website-ontology/" rel="next" title="Notes about practive project: static website-ontology">
-                <i class="fa fa-chevron-left"></i> Notes about practive project: static website-ontology
+              <a href="/2019/08/21/php-guide-for-beginners/" rel="next" title="PHP Guide for Beginners">
+                <i class="fa fa-chevron-left"></i> PHP Guide for Beginners
               </a>
             
           </div>
@@ -494,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/03/y-combinator-in-php/" rel="prev" title="Y-Combinator in PHP">
-                Y-Combinator in PHP <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -541,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,6 +528,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Intro-for-Y-Combinator"><span class="nav-number">1.</span> <span class="nav-text">Intro for Y-Combinator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Warn-Up"><span class="nav-number">2.</span> <span class="nav-text">Warn Up</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Y-Combinator"><span class="nav-number">3.</span> <span class="nav-text">Y-Combinator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Origin-Code"><span class="nav-number">3.1.</span> <span class="nav-text">Origin Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-Execution-Process-for-fractorial-3"><span class="nav-number">3.2.</span> <span class="nav-text">The Execution Process for $fractorial(3)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

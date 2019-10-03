@@ -1750,7 +1750,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff1f5d;
+  background: #f0fc28;
 }
 .feed-link,
 .chat {
@@ -2459,7 +2459,7 @@ embed {
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
 }
-<link href="https://fonts.googleapis.com/css?family=Crimson+Prodisplay=swap"rel="stylesheet">,
+@import url("https://fonts.googleapis.com/css?family=Crimson+Pro&display=swap");
 .headband {
   background-color: #333;
 }
@@ -2471,7 +2471,7 @@ embed {
   font-weight: bold;
 }
 .menu-item-icon::before {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 .main-inner {
   width: 25em;
@@ -2490,9 +2490,12 @@ embed {
   overflow-wrap: break-word;
   word-wrap: break-word;
   font-family: 'Crimson Pro', serif;
-  font-size: 25px;
+  font-size: 1.5em;
   font-style: normal;
   font-weight: 400;
   color: #333;
   line-height: 1.4em;
+}
+code {
+  font-size: 0.7em;
 }
