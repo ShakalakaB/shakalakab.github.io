@@ -94,21 +94,18 @@
 
 
 
-  <meta name="description" content="Intro for Y-CombinatorWarn Up12345678910111213&amp;lt;?phpfunction Y($F) &amp;#123;    return $F(&amp;apos;Department B&amp;apos;);&amp;#125;$test = Y(function ($item) &amp;#123;    return function ($value) use ($item) &amp;#123">
+  <meta name="description" content="I started learning programming on FreeCodeCamp on January 2019, and on July, I became a back-end developer. This maybe seems kind fast, but actually it’s just because I skipped during the course and s">
 <meta name="keywords" content="blog&#x2F; life &#x2F; beauty">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Y-Combinator in PHP">
-<meta property="og:url" content="http://yoursite.com/2019/10/03/y-combinator-in-php/index.html">
+<meta property="og:title" content="How I Became a Programmer">
+<meta property="og:url" content="http://yoursite.com/2020/02/27/how-i-became-a-programmer/index.html">
 <meta property="og:site_name" content="ShakalakaB Blog">
-<meta property="og:description" content="Intro for Y-CombinatorWarn Up12345678910111213&amp;lt;?phpfunction Y($F) &amp;#123;    return $F(&amp;apos;Department B&amp;apos;);&amp;#125;$test = Y(function ($item) &amp;#123;    return function ($value) use ($item) &amp;#123">
+<meta property="og:description" content="I started learning programming on FreeCodeCamp on January 2019, and on July, I became a back-end developer. This maybe seems kind fast, but actually it’s just because I skipped during the course and s">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/images/Y_Combinator_20191003.png">
-<meta property="og:image" content="http://yoursite.com/images/execution_of_Y_Combinator_20191003.png">
-<meta property="og:updated_time" content="2019-10-03T12:56:14.908Z">
+<meta property="og:updated_time" content="2020-02-27T15:35:09.014Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Y-Combinator in PHP">
-<meta name="twitter:description" content="Intro for Y-CombinatorWarn Up12345678910111213&amp;lt;?phpfunction Y($F) &amp;#123;    return $F(&amp;apos;Department B&amp;apos;);&amp;#125;$test = Y(function ($item) &amp;#123;    return function ($value) use ($item) &amp;#123">
-<meta name="twitter:image" content="http://yoursite.com/images/Y_Combinator_20191003.png">
+<meta name="twitter:title" content="How I Became a Programmer">
+<meta name="twitter:description" content="I started learning programming on FreeCodeCamp on January 2019, and on July, I became a back-end developer. This maybe seems kind fast, but actually it’s just because I skipped during the course and s">
 
 
 
@@ -116,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/10/03/y-combinator-in-php/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/27/how-i-became-a-programmer/">
 
 
 
@@ -126,7 +123,7 @@
   };
 </script>
 
-  <title>Y-Combinator in PHP | ShakalakaB Blog</title>
+  <title>How I Became a Programmer | ShakalakaB Blog</title>
   
 
 
@@ -293,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/y-combinator-in-php/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/27/how-i-became-a-programmer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShakalakaB">
@@ -310,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Y-Combinator in PHP
+          <h1 class="post-title" itemprop="name headline">How I Became a Programmer
 
               
             
@@ -336,7 +333,7 @@
                 
               
 
-              <time title="Created: 2019-10-03 16:17:13 / Modified: 20:56:14" itemprop="dateCreated datePublished" datetime="2019-10-03T16:17:13+08:00">2019-10-03</time>
+              <time title="Created: 2020-02-27 23:26:12 / Modified: 23:35:09" itemprop="dateCreated datePublished" datetime="2020-02-27T23:26:12+08:00">2020-02-27</time>
             </span>
           
 
@@ -378,18 +375,12 @@
       
 
       
-        <h3 id="Intro-for-Y-Combinator"><a href="#Intro-for-Y-Combinator" class="headerlink" title="Intro for Y-Combinator"></a><a href="https://mvanier.livejournal.com/2897.html" target="_blank" rel="noopener">Intro for Y-Combinator</a></h3><h3 id="Warn-Up"><a href="#Warn-Up" class="headerlink" title="Warn Up"></a>Warn Up</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">function Y($F) &#123;</span><br><span class="line">    return $F(&apos;Department B&apos;);</span><br><span class="line">&#125;</span><br><span class="line">$test = Y(function ($item) &#123;</span><br><span class="line">    return function ($value) use ($item) &#123;</span><br><span class="line">        echo &apos;value: &apos; . $value . &apos; is inside &apos; . $item . &quot;\n&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$test(&apos;Department A&apos;); // &apos;value: Department A is inside Department B&apos;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Explaination:</p>
-<p><code>$test(&#39;Department A&#39;)</code> -&gt; </p>
-<p><code>func Y($F)(&#39;Department A&#39;)</code> -&gt; </p>
-<p><code>$F(&#39;Department B&#39;)(&#39;Department A&#39;)</code> -&gt;</p>
-<p><code>func($item){...}(&#39;Department B&#39;)(&#39;Department A&#39;)</code> -&gt;</p>
-<p><code>func ($value) use (&#39;Department B&#39;) {...} (&#39;Department A&#39;)</code> -&gt;</p>
-<p><code>func (&#39;Department A&#39;) use (&#39;Department B&#39;) {...}</code></p>
-<h3 id="Y-Combinator"><a href="#Y-Combinator" class="headerlink" title="Y-Combinator"></a>Y-Combinator</h3><h4 id="Origin-Code"><a href="#Origin-Code" class="headerlink" title="Origin Code"></a><a href="https://php100.wordpress.com/2009/04/13/php-y-combinator/" target="_blank" rel="noopener">Origin Code</a></h4><h4 id="The-Execution-Process-for-fractorial-3"><a href="#The-Execution-Process-for-fractorial-3" class="headerlink" title="The Execution Process for $fractorial(3)"></a>The Execution Process for <code>$fractorial(3)</code></h4><p>只有当 function被输入parameter时，func才开始执行、才开始进入 {}中，否则就不执行func</p>
-<p><img src="/images/Y_Combinator_20191003.png" alt="Y_Combinator"></p>
-<p><img src="/images/execution_of_Y_Combinator_20191003.png" alt="execution_of_Y_Combinator"></p>
+        <p>I started learning programming on FreeCodeCamp on January 2019, and on July, I became a back-end developer. This maybe seems kind fast, but actually it’s just because I skipped during the course and some luck.<br>When I was in the middle of Data Visualization Course in FreeCodeCamp, I stopped it, and built my first static website 23 work by mimic for job interview. The website gave me the best opportunity to learn at a very fast speed. Once I finished it, I began to look for a job, within one week, I got the back-end job offer.</p>
+<p>So, why back-end, not front-end?<br>Well, it’s an coincidence. I always hope to have full-stack capability, and this is the answer I gave in every job interview when asked about career plan. And I also told them my shortcoming is that I would lose patience quickly when things get iterated. Luckily, one manager just get interested by my character and learning speed, so he seriously asked me: you don’t need to wait, I can give you the offer as back-end developer now, but you only have three months to prove to us that this is a right choice for both of us, do you want to take this? I took it. Then I’m a back-end developer now.</p>
+<p>Don’t let the better be the enemy of good. The thing I learned from this experience is: I shouldn’t wait for the perfect moment to act, I don’t need to start next step only when I get everything prepared. When I learned programming on FCC, I always thought it as a step-by-step path, I can only start next course after I get this certificate, I can only start to build my first website when I finished the whole course, I can only start when I seem perfect. No, don’t let this be a reason to postpone to act, don’t let this learning, preparing process be the reason…</p>
+<p>If you feel struggling, it’s ok. When learning programming, I found learning isn’t a linear line, it’s a spiral process. First, you got a problem, search it and get a strange word, struggle through complicated articles, you remember its name. Later, you encounter it again, not afraid this time, and read articles patiently, basically know the how. Then, it pops up again, maybe with some delicate make up, show you the point you miss. You study it one more time. Then it’s not a problem anymore but a toy. Seem like walking with same problem, but every time the known cycle get bigger. This is a typical pattern for me to learn programming.</p>
+<p>I found building the website really helps me grow, it mixes css, js and so much problem I never expects. If we focus too much on the FCC tasks, and geting higher score, then we kind of learn things by memory, not exposed to the real battleground. Then it’s natural to forget what we have memorized.</p>
+<p>The thing they really value is your learning speed and your potential, not how good you are now, for them, no matter how much you have learned on FCC, you are just a newbie who never have real experience. Compared with knowing all answers for every question during interview, it’s more important to show: ‘I don’t know the answer, but it doesn’t matter, I can learn fast, it’s not a problem”. Your confidence would add the chance that they bet on you.</p>
 
       
     </div>
@@ -420,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/21/php-guide-for-beginners/" rel="next" title="PHP Guide for Beginners">
-                <i class="fa fa-chevron-left"></i> PHP Guide for Beginners
+              <a href="/2020/02/27/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -429,10 +420,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/02/wo-jiu-zhe-yang-cheng-wei-liao-yi-ming-cheng-xu-yuan/" rel="prev" title="我就这样成为了一名程序员">
-                我就这样成为了一名程序员 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -476,17 +463,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -547,23 +525,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Intro-for-Y-Combinator"><span class="nav-number">1.</span> <span class="nav-text">Intro for Y-Combinator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Warn-Up"><span class="nav-number">2.</span> <span class="nav-text">Warn Up</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Y-Combinator"><span class="nav-number">3.</span> <span class="nav-text">Y-Combinator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Origin-Code"><span class="nav-number">3.1.</span> <span class="nav-text">Origin Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-Execution-Process-for-fractorial-3"><span class="nav-number">3.2.</span> <span class="nav-text">The Execution Process for $fractorial(3)</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
