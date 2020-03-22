@@ -290,6 +290,314 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/remove-duplicate-value-from-nested-associative-array-part-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShakalakaB">
+      <meta itemprop="description" content="About program and more...">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShakalakaB Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/03/22/remove-duplicate-value-from-nested-associative-array-part-1/" class="post-title-link" itemprop="url">Remove Duplicate Value from Nested Associative Array: Part 1</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-03-22 22:03:01 / Modified: 22:03:39" itemprop="dateCreated datePublished" datetime="2020-03-22T22:03:01+08:00">2020-03-22</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Romoving duplicate value from nested array and return the result as json is kind of tricky, the main problem is<br>how to loop through and remove element while keeping array reindexed. I would compare three solutions I came up<br>and point out some thing we don’t notice usually.</p>
+<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Supposing we have an array as following, and need to remove element which has duplicate ‘value’ in ‘channels’. So we need<br>to remove <code>$arr[1][&#39;channels&#39;][0]</code> and <code>$arr[2][&#39;channels&#39;][0]</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$arr = [</span><br><span class="line">    [</span><br><span class="line">        &apos;name&apos; =&gt; &apos;a&apos;,</span><br><span class="line">        &apos;channels&apos; =&gt; [</span><br><span class="line">            [&apos;id&apos; =&gt; 1, &apos;value&apos; =&gt; 111],</span><br><span class="line">            [&apos;id&apos; =&gt; 2, &apos;value&apos; =&gt; 222],</span><br><span class="line">        ]</span><br><span class="line">    ], [</span><br><span class="line">        &apos;name&apos; =&gt; &apos;b&apos;,</span><br><span class="line">        &apos;channels&apos; =&gt; [</span><br><span class="line">            [&apos;id&apos; =&gt; 3, &apos;value&apos; =&gt; 111],</span><br><span class="line">            [&apos;id&apos; =&gt; 4, &apos;value&apos; =&gt; 333],</span><br><span class="line">        ]</span><br><span class="line">    ], [</span><br><span class="line">        &apos;name&apos; =&gt; &apos;c&apos;,</span><br><span class="line">        &apos;channels&apos; =&gt; [</span><br><span class="line">            [&apos;id&apos; =&gt; 5, &apos;value&apos; =&gt; 333],</span><br><span class="line">            [&apos;id&apos; =&gt; 6, &apos;value&apos; =&gt; 666],</span><br><span class="line">            [&apos;id&apos; =&gt; 7, &apos;value&apos; =&gt; 666],</span><br><span class="line">            [&apos;id&apos; =&gt; 8, &apos;value&apos; =&gt; 888],</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### Solution 1: using `foreach` and `unset`</span><br></pre></td></tr></table></figure>
+
+<p>$unique = [];<br>foreach ($arr as &amp;$item) {<br>    foreach ($item[‘channels’] as $key =&gt; $channelItem) {<br>        if (in_array($channelItem[‘value’], $unique)) {<br>            unset($item[‘channels’][$key]);<br>            continue;<br>        }<br>        $unique[] = $channelItem[‘value’];<br>    }</p>
+<p>print_r($arr);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**Result**</span><br></pre></td></tr></table></figure>
+
+<p>Array<br>(
+    [0] =&gt; Array<br>        (<br>            [name] =&gt; a<br>            [channels] =&gt; Array<br>                (<br>                    [0] =&gt; Array<br>                        (<br>                            [id] =&gt; 1<br>                            [value] =&gt; 111<br>                        )</p>
+<pre><code>                [1] =&gt; Array
+                    (
+                        [id] =&gt; 2
+                        [value] =&gt; 222
+                    )
+
+            )
+
+    )
+
+[1] =&gt; Array
+    (
+        [name] =&gt; b
+        [channels] =&gt; Array
+            (
+                [1] =&gt; Array
+                    (
+                        [id] =&gt; 4
+                        [value] =&gt; 333
+                    )
+
+            )
+
+    )
+
+[2] =&gt; Array
+    (
+        [name] =&gt; c
+        [channels] =&gt; Array
+            (
+                [1] =&gt; Array
+                    (
+                        [id] =&gt; 6
+                        [value] =&gt; 666
+                    )
+
+                [3] =&gt; Array
+                    (
+                        [id] =&gt; 8
+                        [value] =&gt; 888
+                    )
+
+            )
+
+    )</code></pre><p>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">This solution looks fine, but it would cause problem when sent through json response. Noticing the key in </span><br><span class="line">`$arr[1][&apos;channels]` and `$arr[2][&apos;channels]`, they are not in sequential, this could make the array after sent</span><br><span class="line">through json difficult to loop.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Solution 2: using `foreach` and `array_splice`</span><br><span class="line">`array_splice` would reindex array automatically after remove element.</span><br></pre></td></tr></table></figure>
+
+<p>$unique = [];<br>foreach ($arr as &amp;$item) {<br>    foreach ($item[‘channels’] as $key =&gt; $channelItem) {<br>        if (in_array($channelItem[‘value’], $unique)) {<br>            array_splice($item[‘channels’], $key, 1);<br>            continue;<br>        }<br>        $unique[] = $channelItem[‘value’];<br>    }</p>
+<p>print_r($arr);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**Result**</span><br></pre></td></tr></table></figure>
+
+<p>Array<br>(
+    [0] =&gt; Array<br>        (<br>            [name] =&gt; a<br>            [channels] =&gt; Array<br>                (<br>                    [0] =&gt; Array<br>                        (<br>                            [id] =&gt; 1<br>                            [value] =&gt; 111<br>                        )</p>
+<pre><code>                [1] =&gt; Array
+                    (
+                        [id] =&gt; 2
+                        [value] =&gt; 222
+                    )
+
+            )
+
+    )
+
+[1] =&gt; Array
+    (
+        [name] =&gt; b
+        [channels] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [id] =&gt; 4
+                        [value] =&gt; 333
+                    )
+
+            )
+
+    )
+
+[2] =&gt; Array
+    (
+        [name] =&gt; c
+        [channels] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [id] =&gt; 6
+                        [value] =&gt; 666
+                    )
+
+                [1] =&gt; Array
+                    (
+                        [id] =&gt; 7
+                        [value] =&gt; 666
+                    )
+
+            )
+
+    )</code></pre><p>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">This solution haven&apos;t filtered out duplicate value in`$arr[2][&apos;channels&apos;]`, and even remove `$arr[2][&apos;channels&apos;][3]`</span><br><span class="line">which shoulb be kept. Why?</span><br><span class="line">It&apos;s because the internal array pointer in `foreach` is not synchronous with `array_splice`. Not matter how </span><br><span class="line">`array_splice` reindex array, `foreach` would just keep the index as beginning, so same index in these two ways</span><br><span class="line">would point to different value once reindex happens.</span><br><span class="line"></span><br><span class="line">### Solution 3: using `array_walk` and `array_splice`</span><br></pre></td></tr></table></figure>
+
+<p>$unique = [];<br>foreach ($arr as &amp;$item) {<br>    array_walk($item[‘channels’], function ($channelItem, $key) use (&amp;$unique, &amp;$item) {<br>        if (in_array($channelItem[‘value’], $unique)) {<br>            array_splice($item[‘channels’], $key, 1);<br>        }<br>        $unique[] = $channelItem[‘value’];<br>    });<br>}
+print_r($arr);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Result**</span><br></pre></td></tr></table></figure>
+
+<p>Array<br>(
+    [0] =&gt; Array<br>        (<br>            [name] =&gt; a<br>            [channels] =&gt; Array<br>                (<br>                    [0] =&gt; Array<br>                        (<br>                            [id] =&gt; 1<br>                            [value] =&gt; 111<br>                        )</p>
+<pre><code>                [1] =&gt; Array
+                    (
+                        [id] =&gt; 2
+                        [value] =&gt; 222
+                    )
+
+            )
+
+    )
+
+[1] =&gt; Array
+    (
+        [name] =&gt; b
+        [channels] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [id] =&gt; 4
+                        [value] =&gt; 333
+                    )
+
+            )
+
+    )
+
+[2] =&gt; Array
+    (
+        [name] =&gt; c
+        [channels] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [id] =&gt; 6
+                        [value] =&gt; 666
+                    )
+
+                [1] =&gt; Array
+                    (
+                        [id] =&gt; 8
+                        [value] =&gt; 888
+                    )
+
+            )
+
+    )</code></pre><p>)
+```
+Now, we finally get the result we want. Notice: add <code>&amp;</code> in anoymous function use.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/27/how-i-became-a-programmer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1185,7 +1493,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

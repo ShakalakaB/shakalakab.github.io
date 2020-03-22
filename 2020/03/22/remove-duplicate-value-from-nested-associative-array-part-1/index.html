@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Romoving duplicate value from nested array and return the result as json is kind of tricky, the main problem ishow to loop through and remove element while keeping array reindexed. I would compare thr">
+<meta name="keywords" content="blog&#x2F; life &#x2F; beauty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Remove Duplicate Value from Nested Associative Array: Part 1">
+<meta property="og:url" content="http://yoursite.com/2020/03/22/remove-duplicate-value-from-nested-associative-array-part-1/index.html">
+<meta property="og:site_name" content="ShakalakaB Blog">
+<meta property="og:description" content="Romoving duplicate value from nested array and return the result as json is kind of tricky, the main problem ishow to loop through and remove element while keeping array reindexed. I would compare thr">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-22T14:03:39.841Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Remove Duplicate Value from Nested Associative Array: Part 1">
+<meta name="twitter:description" content="Romoving duplicate value from nested array and return the result as json is kind of tricky, the main problem ishow to loop through and remove element while keeping array reindexed. I would compare thr">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2020/03/22/remove-duplicate-value-from-nested-associative-array-part-1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Remove Duplicate Value from Nested Associative Array: Part 1 | ShakalakaB Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShakalakaB Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">ShakalakaB Blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/remove-duplicate-value-from-nested-associative-array-part-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShakalakaB">
+      <meta itemprop="description" content="About program and more...">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShakalakaB Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Remove Duplicate Value from Nested Associative Array: Part 1
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-03-22 22:03:01 / Modified: 22:03:39" itemprop="dateCreated datePublished" datetime="2020-03-22T22:03:01+08:00">2020-03-22</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Romoving duplicate value from nested array and return the result as json is kind of tricky, the main problem is<br>how to loop through and remove element while keeping array reindexed. I would compare three solutions I came up<br>and point out some thing we don’t notice usually.</p>
+<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Supposing we have an array as following, and need to remove element which has duplicate ‘value’ in ‘channels’. So we need<br>to remove <code>$arr[1][&#39;channels&#39;][0]</code> and <code>$arr[2][&#39;channels&#39;][0]</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$arr = [</span><br><span class="line">    [</span><br><span class="line">        &apos;name&apos; =&gt; &apos;a&apos;,</span><br><span class="line">        &apos;channels&apos; =&gt; [</span><br><span class="line">            [&apos;id&apos; =&gt; 1, &apos;value&apos; =&gt; 111],</span><br><span class="line">            [&apos;id&apos; =&gt; 2, &apos;value&apos; =&gt; 222],</span><br><span class="line">        ]</span><br><span class="line">    ], [</span><br><span class="line">        &apos;name&apos; =&gt; &apos;b&apos;,</span><br><span class="line">        &apos;channels&apos; =&gt; [</span><br><span class="line">            [&apos;id&apos; =&gt; 3, &apos;value&apos; =&gt; 111],</span><br><span class="line">            [&apos;id&apos; =&gt; 4, &apos;value&apos; =&gt; 333],</span><br><span class="line">        ]</span><br><span class="line">    ], [</span><br><span class="line">        &apos;name&apos; =&gt; &apos;c&apos;,</span><br><span class="line">        &apos;channels&apos; =&gt; [</span><br><span class="line">            [&apos;id&apos; =&gt; 5, &apos;value&apos; =&gt; 333],</span><br><span class="line">            [&apos;id&apos; =&gt; 6, &apos;value&apos; =&gt; 666],</span><br><span class="line">            [&apos;id&apos; =&gt; 7, &apos;value&apos; =&gt; 666],</span><br><span class="line">            [&apos;id&apos; =&gt; 8, &apos;value&apos; =&gt; 888],</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### Solution 1: using `foreach` and `unset`</span><br></pre></td></tr></table></figure>
+
+<p>$unique = [];<br>foreach ($arr as &amp;$item) {<br>    foreach ($item[‘channels’] as $key =&gt; $channelItem) {<br>        if (in_array($channelItem[‘value’], $unique)) {<br>            unset($item[‘channels’][$key]);<br>            continue;<br>        }<br>        $unique[] = $channelItem[‘value’];<br>    }</p>
+<p>print_r($arr);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**Result**</span><br></pre></td></tr></table></figure>
+
+<p>Array<br>(
+    [0] =&gt; Array<br>        (<br>            [name] =&gt; a<br>            [channels] =&gt; Array<br>                (<br>                    [0] =&gt; Array<br>                        (<br>                            [id] =&gt; 1<br>                            [value] =&gt; 111<br>                        )</p>
+<pre><code>                [1] =&gt; Array
+                    (
+                        [id] =&gt; 2
+                        [value] =&gt; 222
+                    )
+
+            )
+
+    )
+
+[1] =&gt; Array
+    (
+        [name] =&gt; b
+        [channels] =&gt; Array
+            (
+                [1] =&gt; Array
+                    (
+                        [id] =&gt; 4
+                        [value] =&gt; 333
+                    )
+
+            )
+
+    )
+
+[2] =&gt; Array
+    (
+        [name] =&gt; c
+        [channels] =&gt; Array
+            (
+                [1] =&gt; Array
+                    (
+                        [id] =&gt; 6
+                        [value] =&gt; 666
+                    )
+
+                [3] =&gt; Array
+                    (
+                        [id] =&gt; 8
+                        [value] =&gt; 888
+                    )
+
+            )
+
+    )</code></pre><p>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">This solution looks fine, but it would cause problem when sent through json response. Noticing the key in </span><br><span class="line">`$arr[1][&apos;channels]` and `$arr[2][&apos;channels]`, they are not in sequential, this could make the array after sent</span><br><span class="line">through json difficult to loop.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Solution 2: using `foreach` and `array_splice`</span><br><span class="line">`array_splice` would reindex array automatically after remove element.</span><br></pre></td></tr></table></figure>
+
+<p>$unique = [];<br>foreach ($arr as &amp;$item) {<br>    foreach ($item[‘channels’] as $key =&gt; $channelItem) {<br>        if (in_array($channelItem[‘value’], $unique)) {<br>            array_splice($item[‘channels’], $key, 1);<br>            continue;<br>        }<br>        $unique[] = $channelItem[‘value’];<br>    }</p>
+<p>print_r($arr);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**Result**</span><br></pre></td></tr></table></figure>
+
+<p>Array<br>(
+    [0] =&gt; Array<br>        (<br>            [name] =&gt; a<br>            [channels] =&gt; Array<br>                (<br>                    [0] =&gt; Array<br>                        (<br>                            [id] =&gt; 1<br>                            [value] =&gt; 111<br>                        )</p>
+<pre><code>                [1] =&gt; Array
+                    (
+                        [id] =&gt; 2
+                        [value] =&gt; 222
+                    )
+
+            )
+
+    )
+
+[1] =&gt; Array
+    (
+        [name] =&gt; b
+        [channels] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [id] =&gt; 4
+                        [value] =&gt; 333
+                    )
+
+            )
+
+    )
+
+[2] =&gt; Array
+    (
+        [name] =&gt; c
+        [channels] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [id] =&gt; 6
+                        [value] =&gt; 666
+                    )
+
+                [1] =&gt; Array
+                    (
+                        [id] =&gt; 7
+                        [value] =&gt; 666
+                    )
+
+            )
+
+    )</code></pre><p>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">This solution haven&apos;t filtered out duplicate value in`$arr[2][&apos;channels&apos;]`, and even remove `$arr[2][&apos;channels&apos;][3]`</span><br><span class="line">which shoulb be kept. Why?</span><br><span class="line">It&apos;s because the internal array pointer in `foreach` is not synchronous with `array_splice`. Not matter how </span><br><span class="line">`array_splice` reindex array, `foreach` would just keep the index as beginning, so same index in these two ways</span><br><span class="line">would point to different value once reindex happens.</span><br><span class="line"></span><br><span class="line">### Solution 3: using `array_walk` and `array_splice`</span><br></pre></td></tr></table></figure>
+
+<p>$unique = [];<br>foreach ($arr as &amp;$item) {<br>    array_walk($item[‘channels’], function ($channelItem, $key) use (&amp;$unique, &amp;$item) {<br>        if (in_array($channelItem[‘value’], $unique)) {<br>            array_splice($item[‘channels’], $key, 1);<br>        }<br>        $unique[] = $channelItem[‘value’];<br>    });<br>}
+print_r($arr);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Result**</span><br></pre></td></tr></table></figure>
+
+<p>Array<br>(
+    [0] =&gt; Array<br>        (<br>            [name] =&gt; a<br>            [channels] =&gt; Array<br>                (<br>                    [0] =&gt; Array<br>                        (<br>                            [id] =&gt; 1<br>                            [value] =&gt; 111<br>                        )</p>
+<pre><code>                [1] =&gt; Array
+                    (
+                        [id] =&gt; 2
+                        [value] =&gt; 222
+                    )
+
+            )
+
+    )
+
+[1] =&gt; Array
+    (
+        [name] =&gt; b
+        [channels] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [id] =&gt; 4
+                        [value] =&gt; 333
+                    )
+
+            )
+
+    )
+
+[2] =&gt; Array
+    (
+        [name] =&gt; c
+        [channels] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [id] =&gt; 6
+                        [value] =&gt; 666
+                    )
+
+                [1] =&gt; Array
+                    (
+                        [id] =&gt; 8
+                        [value] =&gt; 888
+                    )
+
+            )
+
+    )</code></pre><p>)
+```
+Now, we finally get the result we want. Notice: add <code>&amp;</code> in anoymous function use.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/27/how-i-became-a-programmer/" rel="next" title="How I Became a Programmer">
+                <i class="fa fa-chevron-left"></i> How I Became a Programmer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ShakalakaB</p>
+              <div class="site-description motion-element" itemprop="description">About program and more...</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/aldora713" title="Twitter &rarr; https://twitter.com/aldora713" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question"><span class="nav-number">1.</span> <span class="nav-text">Question</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShakalakaB</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
