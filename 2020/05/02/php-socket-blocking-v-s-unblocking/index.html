@@ -28,10 +28,12 @@
 <meta property="og:site_name" content="ShakalakaB Blog">
 <meta property="og:description" content="I have been interested in asynchronous programming, always want to find out what happens behind the screen. I searched online, and noticed ‘blocking socket’ is a topic that can’t be walked around. And">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-02T14:02:43.485Z">
+<meta property="og:image" content="http://yoursite.com/images/client_server.png">
+<meta property="og:updated_time" content="2020-05-02T14:12:03.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP Socket: Blocking v.s. Unblocking - Part 1">
 <meta name="twitter:description" content="I have been interested in asynchronous programming, always want to find out what happens behind the screen. I searched online, and noticed ‘blocking socket’ is a topic that can’t be walked around. And">
+<meta name="twitter:image" content="http://yoursite.com/images/client_server.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/05/02/php-socket-blocking-v-s-unblocking/">
 
@@ -176,7 +178,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-05-02 17:17:15 / Modified: 22:02:43" itemprop="dateCreated datePublished" datetime="2020-05-02T17:17:15+08:00">2020-05-02</time>
+              <time title="Created: 2020-05-02 17:17:15 / Modified: 22:12:03" itemprop="dateCreated datePublished" datetime="2020-05-02T17:17:15+08:00">2020-05-02</time>
             </span>
 
           
@@ -190,7 +192,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>I have been interested in asynchronous programming, always want to find out what happens behind the screen. I searched online, and noticed ‘blocking socket’ is a topic that can’t be walked around. And following is what I understand after some code experiments.</p>
+        <p><img src="/images/client_server.png" alt="client_server"><br>I have been interested in asynchronous programming, always want to find out what happens behind the screen. I searched online, and noticed ‘blocking socket’ is a topic that can’t be walked around. And following is what I understand after some code experiments.</p>
 <a id="more"></a>
 
 <h3 id="Blocking-Socket"><a href="#Blocking-Socket" class="headerlink" title="Blocking Socket"></a>Blocking Socket</h3><p>First, what is socket? The PHP official manual says it’s an endpoint for communication. Still like a definition in mist for me, so I mimic the online example to see how ‘socket’ works. Following is an example for blocking socket.<br>In order to communite, we need a ‘server’, who waits for a client’s message and a ‘client’, who tells server what does it need, then the server would answer.</p>
