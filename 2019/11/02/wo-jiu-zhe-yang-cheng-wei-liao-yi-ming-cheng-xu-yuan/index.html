@@ -1,125 +1,48 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="en">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.2">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="2019年4月底从产品岗位辞职，5月、6月两个月窝着写代码，完成第一个静态网站作品后便开始找前端岗位却误打误撞进入后端，成为PHP工程师，以此开启了我的编程职业生涯。这个经历连我自己想起来都觉得“额，有点莫名啊”，我自己速问速答记录一下这段旅程的一些关键点。 Q: 为什么从产品岗位离职去做编程？A: 从小崇拜黑客，在Free Code Camp试水后确定喜欢编程，适合编程，一些性格特质也非常适合，">
+  <meta name="description" content="2019年4月底从产品岗位辞职，5月、6月两个月窝着写代码，完成第一个静态网站作品后便开始找前端岗位却误打误撞进入后端，成为PHP工程师，以此开启了我的编程职业生涯。这个经历连我自己想起来都觉得“额，有点莫名啊”，我自己速问速答记录一下这段旅程的一些关键点。">
 <meta name="keywords" content="blog&#x2F; life &#x2F; beauty">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我就这样成为了一名程序员">
 <meta property="og:url" content="http://yoursite.com/2019/11/02/wo-jiu-zhe-yang-cheng-wei-liao-yi-ming-cheng-xu-yuan/index.html">
 <meta property="og:site_name" content="ShakalakaB Blog">
-<meta property="og:description" content="2019年4月底从产品岗位辞职，5月、6月两个月窝着写代码，完成第一个静态网站作品后便开始找前端岗位却误打误撞进入后端，成为PHP工程师，以此开启了我的编程职业生涯。这个经历连我自己想起来都觉得“额，有点莫名啊”，我自己速问速答记录一下这段旅程的一些关键点。 Q: 为什么从产品岗位离职去做编程？A: 从小崇拜黑客，在Free Code Camp试水后确定喜欢编程，适合编程，一些性格特质也非常适合，">
+<meta property="og:description" content="2019年4月底从产品岗位辞职，5月、6月两个月窝着写代码，完成第一个静态网站作品后便开始找前端岗位却误打误撞进入后端，成为PHP工程师，以此开启了我的编程职业生涯。这个经历连我自己想起来都觉得“额，有点莫名啊”，我自己速问速答记录一下这段旅程的一些关键点。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-02T14:06:40.145Z">
+<meta property="og:updated_time" content="2020-05-01T13:50:16.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我就这样成为了一名程序员">
-<meta name="twitter:description" content="2019年4月底从产品岗位辞职，5月、6月两个月窝着写代码，完成第一个静态网站作品后便开始找前端岗位却误打误撞进入后端，成为PHP工程师，以此开启了我的编程职业生涯。这个经历连我自己想起来都觉得“额，有点莫名啊”，我自己速问速答记录一下这段旅程的一些关键点。 Q: 为什么从产品岗位离职去做编程？A: 从小崇拜黑客，在Free Code Camp试水后确定喜欢编程，适合编程，一些性格特质也非常适合，">
+<meta name="twitter:description" content="2019年4月底从产品岗位辞职，5月、6月两个月窝着写代码，完成第一个静态网站作品后便开始找前端岗位却误打误撞进入后端，成为PHP工程师，以此开启了我的编程职业生涯。这个经历连我自己想起来都觉得“额，有点莫名啊”，我自己速问速答记录一下这段旅程的一些关键点。">
+
+<link rel="canonical" href="http://yoursite.com/2019/11/02/wo-jiu-zhe-yang-cheng-wei-liao-yi-ming-cheng-xu-yuan/">
 
 
-
-
-
-  
-  
-  <link rel="canonical" href="http://yoursite.com/2019/11/02/wo-jiu-zhe-yang-cheng-wei-liao-yi-ming-cheng-xu-yuan/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
   };
 </script>
 
@@ -131,15 +54,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -148,9 +64,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -164,100 +79,54 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">ShakalakaB Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">ShakalakaB Blog</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ShakalakaB Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">ShakalakaB Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -265,106 +134,61 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/02/wo-jiu-zhe-yang-cheng-wei-liao-yi-ming-cheng-xu-yuan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="ShakalakaB">
       <meta itemprop="description" content="About program and more...">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ShakalakaB Blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">我就这样成为了一名程序员
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          我就这样成为了一名程序员
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
-              <time title="Created: 2019-11-02 17:36:16 / Modified: 22:06:40" itemprop="dateCreated datePublished" datetime="2019-11-02T17:36:16+08:00">2019-11-02</time>
+              <time title="Created: 2019-11-02 17:36:16" itemprop="dateCreated datePublished" datetime="2019-11-02T17:36:16+08:00">2019-11-02</time>
             </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          <br>
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-01 21:50:16" itemprop="dateModified" datetime="2020-05-01T21:50:16+08:00">2020-05-01</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -372,10 +196,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
         <p>2019年4月底从产品岗位辞职，5月、6月两个月窝着写代码，完成<a href="https://shakalakab.github.io/ontology/" target="_blank" rel="noopener">第一个静态网站作品</a>后便开始找前端岗位却误打误撞进入后端，成为PHP工程师，以此开启了我的编程职业生涯。<br>这个经历连我自己想起来都觉得“额，有点莫名啊”，我自己速问速答记录一下这段旅程的一些关键点。</p>
+<a id="more"></a>
 <p>Q: 为什么从产品岗位离职去做编程？<br>A: 从小崇拜黑客，在Free Code Camp试水后确定喜欢编程，适合编程，一些性格特质也非常适合，外加当时工作中一些不爽的事情加快了辞职进程。</p>
 <p>Q: 为什么学的是前端，找的是后端？<br>A: 这个属于不在剧本编排中的情节。我正式开始找编程工作后，确实是一心冲前端去的。但所有面试中我都如实说了，未来计划是从前端走向后端，拥有比较全面的技术能力。<br>面试现公司时刚好聊得投缘，刚好他们有空缺的后端岗位，而我的前端也只是开始，所以就直接问了我 “反正都是刚开始，你敢不敢试下后端”， 我就直接在一个前端offer和后端offer中选了后端。<br>技术经理当时和我说这对我们彼此都像是赌博，我想能让他愿意赌一把的原因大概是： 1.我通过全英文资料快速自学的过程， 2.我的学历， 3.坦诚冷静沟通</p>
 <p>Q: 如何自学编程？<br>A: 我的编程自学并不算通畅，印象我大学阶段应该有至少3次尝试自学编程，但都因不得要领而草草放弃。如今回想几次失败的根本原因是：<br>当年是通过<strong>阅读</strong>学习编程，就好像我人生中所有绝大多数学习一样，我先找来书，翻出视频，甚至我找到编程学习网站，然后我开始“阅读”，开始“看”。<br>但编程是一项应用型技能，应用型技能的最佳学习方式是应用，不是阅读，因此编程最好的学习方式是赶紧开始打代码，赶紧想一个你要通过编程建造的“东西”，网站、爬虫、哪怕一个简单的网页，总之，build somethig。<br>除此外，几个加速进入正确轨道的窍门是：</p>
@@ -388,228 +210,141 @@
 <p>Q: 这一路最下来有什么感触?<br>A: 我原来看过一句话貌似是”Don’t let better be the enemy of good.”,大概就是说”别让更好成为好的敌人”,做事情的时候,不要因为想做的更好反而让自己不能开始做好。当开始准备转行时，很容易有一种心理：我要准备充分，我要把Free Code Camp上的题都做了再开始准备自己作品，我要把自己的作品做的更好再开始去找工作，我要有更多的作品再去开始…<br>不管是因为对未知的恐惧或是对更高标准的追求，总是要万无一失才敢走出下一步的人生是很难在人生弯道里超车的，也难以获得意料之外的人生惊喜。有时候越是重大的选择，重要的那一步反而不会是深思熟虑，精心准备好才跨出的，有时候就是无知无畏，就是“老子玩得起”的混混态度才可以做出的。<br>我也经历过总想等待自己做得更好再开始下一步的心理，但庆幸当时心血来潮去和认识的程序员随便聊了聊，当他们告诉我下一步的时候也侧面给了我没有十足准备也要前行的勇气。只学了Free Code Camp上前几章也可以开始准备自己作品，作品很少、作品还有一些小bug、经历很不相关，也要开始去面试，去碰撞，去发现自己要补足的。<br>当你通向未知时，如果没有溺水挣扎的瞬间证明你方向有误。</p>
 <p>Q: 编程学习资源推荐?<br>A:  <a href="https://www.freecodecamp.org/learn/" target="_blank" rel="noopener">Free Code Camp</a>： 项目引导式自学，帮助你更快进入正确编程自学节奏；<br>    <a href="http://wiki.zoomquiet.io/pythonic/MinimalistPyStart" target="_blank" rel="noopener">极简Python上手导念</a>-大妈，此文及作者都值得关注（多搜索作者相关社交账号)</p>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/03/y-combinator-in-php/" rel="prev" title="Y-Combinator in PHP">
+      <i class="fa fa-chevron-left"></i> Y-Combinator in PHP
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/27/how-i-became-a-programmer/" rel="next" title="How I Became a Programmer">
+      How I Became a Programmer <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/10/03/y-combinator-in-php/" rel="next" title="Y-Combinator in PHP">
-                <i class="fa fa-chevron-left"></i> Y-Combinator in PHP
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/27/how-i-became-a-programmer/" rel="prev" title="How I Became a Programmer">
-                How I Became a Programmer <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-
-  </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">ShakalakaB</p>
-              <div class="site-description motion-element" itemprop="description">About program and more...</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">6</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://twitter.com/aldora713" title="Twitter &rarr; https://twitter.com/aldora713" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">ShakalakaB</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ShakalakaB</p>
+  <div class="site-description" itemprop="description">About program and more...</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/aldora713" title="Twitter → https://twitter.com/aldora713" rel="noopener" target="_blank"><i class="twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShakalakaB</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
 
 
 
@@ -618,102 +353,35 @@
 
 
 
+      </div>
+    </footer>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.2"></script>
-
-  <script src="/js/motion.js?v=7.1.2"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.2"></script>
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.1.2"></script>
-<script src="/js/post-details.js?v=7.1.2"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.2"></script>
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
 
 
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
 
   
 
