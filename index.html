@@ -175,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-05-04 11:54:11 / Modified: 12:48:05" itemprop="dateCreated datePublished" datetime="2020-05-04T11:54:11+08:00">2020-05-04</time>
+              <time title="Created: 2020-05-04 11:54:11 / Modified: 12:59:28" itemprop="dateCreated datePublished" datetime="2020-05-04T11:54:11+08:00">2020-05-04</time>
             </span>
 
           
@@ -189,12 +189,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>In <a href="https://shakalakab.github.io/2020/05/02/php-socket-blocking-v-s-unblocking/" target="_blank" rel="noopener">Part 1</a>, I introduced the concept of blocking socket. Now, I would unpack ‘unblocking socket’.</p>
-<p>With unblocking socket, we wouldn’t need the ‘wait’ as in blocking sockets, we don’t need to wait for the completion of operation, and can connect the server with more than one client. Following is the example:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">$address = <span class="string">'127.0.0.1'</span>;</span><br><span class="line">$port = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">ob_implicit_flush();</span><br><span class="line"></span><br><span class="line">$sock = socket_create(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">socket_bind($sock, $address, $port) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'Could not bind to address'</span>);</span><br><span class="line"></span><br><span class="line">socket_listen($sock);</span><br><span class="line"></span><br><span class="line">socket_set_nonblock($sock);</span><br><span class="line"></span><br><span class="line">$clients = [];</span><br><span class="line">$seconds = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> ($newsock = socket_accept($sock)) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"inside socket accept\n"</span>;</span><br><span class="line">        <span class="keyword">if</span> (is_resource($newsock)) &#123;</span><br><span class="line">            socket_set_nonblock($newsock);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"New client connected\n"</span>;</span><br><span class="line"></span><br><span class="line">            $clients[] = $newsock;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (count($clients)) &#123;</span><br><span class="line">        <span class="keyword">foreach</span> ($clients <span class="keyword">AS</span> $k =&gt; $v) &#123;</span><br><span class="line">            <span class="keyword">if</span> ($input = socket_read($v, <span class="number">1024</span>)) &#123;</span><br><span class="line">                $input = trim($input);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">echo</span> <span class="string">"$k: $input\n"</span>;</span><br><span class="line"></span><br><span class="line">                $response = <span class="string">"Received"</span> . <span class="string">"\n"</span>;</span><br><span class="line">                socket_write($v, $response, strlen($response));</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> ($input == <span class="string">'quit'</span>) &#123;</span><br><span class="line">                    socket_close($v);</span><br><span class="line">                    <span class="keyword">unset</span>($clients[$k]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sleep(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">socket_close($sock);</span><br></pre></td></tr></table></figure>
-
-<p>I use <code>socket_set_nonblock()</code> to set socket to non-blocking mode. Now, the socket would return immediately even the connection or read has not completed. Thus, this enables us to switch between many connected sockets. I use <code>foreach</code> to loop through sockets to get the message from clients. The code for clients is same as the one in <a href="https://shakalakab.github.io/2020/05/02/php-socket-blocking-v-s-unblocking/" target="_blank" rel="noopener">Part 1</a>, try it yourself, and you can get a better understanding.</p>
-
+          <p><img src="/images/non-blocking_socket.png" alt="non-blocking_socket"></p>
+<p>In <a href="https://shakalakab.github.io/2020/05/02/php-socket-blocking-v-s-unblocking/" target="_blank" rel="noopener">Part 1</a>, I introduced the concept of blocking socket. Now, I would unpack ‘unblocking socket’.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/04/php-socket-blocking-v-s-unblocking-part-2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -244,7 +248,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-04 12:14:10" itemprop="dateModified" datetime="2020-05-04T12:14:10+08:00">2020-05-04</time>
+                <time title="Modified: 2020-05-04 12:59:28" itemprop="dateModified" datetime="2020-05-04T12:59:28+08:00">2020-05-04</time>
               </span>
 
           
