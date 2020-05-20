@@ -21,7 +21,7 @@
   </script>
 
   <meta name="description" content="In Part 2, I use foreach to loop through sockets to get the message, but this is an inefficient way which consumes much resource of computers, there is a more elegant way to do this: socket_select.">
-<meta name="keywords" content="blog&#x2F; life &#x2F; beauty">
+<meta name="keywords" content="PHP,socket">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP Socket: Blocking v.s. Non-blocking - Part 3">
 <meta property="og:url" content="http://yoursite.com/2020/05/10/php-socket-blocking-v-s-non-blocking-part-3/index.html">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="In Part 2, I use foreach to loop through sockets to get the message, but this is an inefficient way which consumes much resource of computers, there is a more elegant way to do this: socket_select.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/images/non-blocking_socket.png">
-<meta property="og:updated_time" content="2020-05-10T10:21:34.579Z">
+<meta property="og:updated_time" content="2020-05-17T16:37:44.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP Socket: Blocking v.s. Non-blocking - Part 3">
 <meta name="twitter:description" content="In Part 2, I use foreach to loop through sockets to get the message, but this is an inefficient way which consumes much resource of computers, there is a more elegant way to do this: socket_select.">
@@ -176,10 +176,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-05-10 17:51:57 / Modified: 18:21:34" itemprop="dateCreated datePublished" datetime="2020-05-10T17:51:57+08:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 17:51:57" itemprop="dateCreated datePublished" datetime="2020-05-10T17:51:57+08:00">2020-05-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-18 00:37:44" itemprop="dateModified" datetime="2020-05-18T00:37:44+08:00">2020-05-18</time>
+              </span>
 
           
 
@@ -206,6 +212,10 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PHP/" rel="tag"># PHP</a>
+              <a href="/tags/socket/" rel="tag"># socket</a>
+          </div>
 
         
 
@@ -216,7 +226,10 @@
     <a href="/2020/05/04/php-socket-blocking-v-s-unblocking-part-2/" rel="prev" title="PHP Socket: Blocking v.s. Non-blocking - Part 2">
       <i class="fa fa-chevron-left"></i> PHP Socket: Blocking v.s. Non-blocking - Part 2
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/18/unnoticed-things-about-php-exception-error/" rel="next" title="Unnoticed Things about PHP Exception & Error">
+      Unnoticed Things about PHP Exception & Error <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -288,12 +301,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
