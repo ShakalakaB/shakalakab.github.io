@@ -164,7 +164,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/24/php-child-processes-and-signal-part-1/" class="post-title-link" itemprop="url">About Child Process-Notes from *Advanced PHP Programming*</a>
+            <a href="/2020/09/24/php-child-processes-and-signal-part-1/" class="post-title-link" itemprop="url">PHP Child Process and Signal-Part 1</a>
         </h2>
 
         <div class="post-meta">
@@ -181,7 +181,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-30 00:40:21" itemprop="dateModified" datetime="2020-09-30T00:40:21+08:00">2020-09-30</time>
+                <time title="Modified: 2020-10-12 01:04:07" itemprop="dateModified" datetime="2020-10-12T01:04:07+08:00">2020-10-12</time>
               </span>
 
           
@@ -197,8 +197,37 @@
       
           <ul>
 <li>PHP: no native support for multithreads</li>
-<li>Alternative:<code>pcntl_fork()</code> create child process</li>
+<li>Alternative:<code>pcntl_fork()</code> create child processes</li>
+<li>Reap child processes: <code>pcntl_wait()</code> and <code>pcntl_signal()</code> <ul>
+<li><code>pcntl_wait()</code> can only handles the status of child process, totally no reaction for status of parent process.<ul>
+<li><code>pcntl_wait()</code> has no effect when it is called in child process</li>
+<li><code>pcntl_signal()</code> only works for the process it is in, which means if I kill parent process, the signal handler in child won’t work. While <code>pcntl_wait()</code> works for signals. If I kill the child, the <code>pcntl_wait()</code> in parent would detect it.</li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Create-Child-Processes-pcntl-fork"><a href="#Create-Child-Processes-pcntl-fork" class="headerlink" title="Create Child Processes: pcntl_fork()"></a>Create Child Processes: <code>pcntl_fork()</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$pid</span> = pcntl_fork()) &#123;</span><br><span class="line">    <span class="variable">$parent</span> = getmypid();</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"parent: <span class="variable">$parent</span>\n"</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable">$childPid</span> = getmypid();</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"child pid: <span class="variable">$childPid</span>\n"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(Above example is from <em>Advanced PHP Programming</em> by George Schlossnagle)</p>
+<p>The point <code>pcntl_fork()</code> called, child process would be created. In parent process, <code>pcntl_fork()</code> returns the pid of child process, while in the child, it returns 0.</p>
+<h3 id="Reap-child-processes-pcntl-wait-and-pcntl-signal"><a href="#Reap-child-processes-pcntl-wait-and-pcntl-signal" class="headerlink" title="Reap child processes: pcntl_wait() and pcntl_signal()"></a>Reap child processes: <code>pcntl_wait()</code> and <code>pcntl_signal()</code></h3><p><code>pcntl_wait()</code> would wait on or returns the status of a forked child. It instructs the calling process to suspend execution until any of its children terminates. Note two things: </p>
+<ul>
+<li>it can only handles the status of child process, totally no reaction for status of parent process.</li>
+<li>it has no effect when it is called in child process<br><a href="https://www.php.net/manual/en/function.pcntl-wait.php" target="_blank" rel="noopener">More detail here</a>. </li>
+</ul>
+<p><a href="http://php.find-info.ru/php/016/ch05lev1sec4.html" target="_blank" rel="noopener">Detailed example</a>: <em>Cleaning Up After Children</em> part</p>
+<p><code>pcntl_signal</code> would install a signal handler. Signals are the instruction to processes. For example, when we execute command <code>kill</code> to terminate a process, system would send interrupt signal SIGINT. With signal handler, we could define our function to deal with process.<br>The following example shows how we use them to reap child process.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">pcntl_async_signals(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">pcntl_signal(SIGTERM, <span class="function"><span class="keyword">function</span> <span class="params">($signal, $status)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"inside pcntl_signal\n"</span>;</span><br><span class="line">    $pid = pcntl_wait($processStatus, WUNTRACED);</span><br><span class="line"><span class="comment">//    $pid = pcntl_wait($processStatus, WNOHANG);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pcntl_wifexited($processStatus)) &#123;</span><br><span class="line">        $code = pcntl_wexitstatus($processStatus);</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"pid $pid returned exit code: $code\n "</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"$pid was unnaturally terminated\n "</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    print_r($processStatus);</span></span><br><span class="line"><span class="comment">//    echo "\n";</span></span><br><span class="line"><span class="comment">//    echo "signal: $signal\n";</span></span><br><span class="line"><span class="comment">//    print_r($status);</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">if</span> ($pid = pcntl_fork()) &#123;</span><br><span class="line">    $parent = getmypid();</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"parent: $parent\n"</span>;</span><br><span class="line">    </span><br><span class="line">    sleep(<span class="number">60</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $childPid = getmypid();</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"child pid: $childPid\n"</span>;</span><br><span class="line"></span><br><span class="line">    sleep(<span class="number">60</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Execute the above script, and according to the output of process pid, first use <code>kill</code> command to kill parent process, then kill child process. The total output would be like this:</p>
+<pre><code>parent: &lt;parent pid&gt;
+child pid: &lt;child pid&gt;
+inside pcntl_signal  //shows when parent gets killed
+inside pcntl_signal //shows when child gets killed
+pid -1 returned exit code: 0
+pid &lt;child pid&gt; returned exit code: 0</code></pre><p>So what happened? First we execute the script, it create a parent process and a child. Then we kill parent, which send a SIGINT signal, it invokes the signal handler in parent process. So we get the first ‘inside pcntl_signal’, and because <code>pcntl_wait</code> only works for forked processes, so it can’t handle the signal of parent. The parameter in <code>pcntl_wait</code> is ‘WUNTRACED’, which means it would wait until it gets a valid signal from the child.<br>Then we kill the child process, once again, it invokes signal handler. But why there are two lines of  ‘pid * returned exit code *’? Because the <code>pcntl_wait</code> in parent is working. ‘pid -1 returned exit code: 0’ is returned from child process, cause <code>pcntl_wait()</code> has no effect when called in child. The <code>pcntl_wait()</code> in parent successfully detects the exit of child process.</p>
+<p>So what would happen if we kill child first, then kill the parent?</p>
 
       
     </div>
@@ -325,7 +354,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-21 01:08:48" itemprop="dateModified" datetime="2020-05-21T01:08:48+08:00">2020-05-21</time>
+                <time title="Modified: 2020-10-12 00:08:14" itemprop="dateModified" datetime="2020-10-12T00:08:14+08:00">2020-10-12</time>
               </span>
 
           
