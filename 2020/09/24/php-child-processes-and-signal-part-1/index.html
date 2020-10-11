@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="ShakalakaB Blog">
 <meta property="og:description" content="PHP: no native support for multithreads Alternative:pcntl_fork() create child processes Reap child processes: pcntl_wait() and pcntl_signal()  pcntl_wait() can only handles the status of child proces">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-10-11T17:06:28.628Z">
+<meta property="og:updated_time" content="2020-10-11T17:07:21.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP Child Process and Signal-Part 1">
 <meta name="twitter:description" content="PHP: no native support for multithreads Alternative:pcntl_fork() create child processes Reap child processes: pcntl_wait() and pcntl_signal()  pcntl_wait() can only handles the status of child proces">
@@ -182,7 +182,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-10-12 01:06:28" itemprop="dateModified" datetime="2020-10-12T01:06:28+08:00">2020-10-12</time>
+                <time title="Modified: 2020-10-12 01:07:21" itemprop="dateModified" datetime="2020-10-12T01:07:21+08:00">2020-10-12</time>
               </span>
 
           
@@ -200,12 +200,10 @@
 <li>PHP: no native support for multithreads</li>
 <li>Alternative:<code>pcntl_fork()</code> create child processes</li>
 <li>Reap child processes: <code>pcntl_wait()</code> and <code>pcntl_signal()</code> <ul>
-<li><code>pcntl_wait()</code> can only handles the status of child process, totally no reaction for status of parent process.<ul>
+<li><code>pcntl_wait()</code> can only handles the status of child process, totally no reaction for status of parent process.</li>
 <li><code>pcntl_wait()</code> has no effect when it is called in child process</li>
 <li><code>pcntl_signal()</code> only works for the process it is in, which means if I kill parent process, the signal handler in child won’t work. While <code>pcntl_wait()</code> works for signals. If I kill the child, the <code>pcntl_wait()</code> in parent would detect it.<a id="more"></a>
 
-</li>
-</ul>
 </li>
 </ul>
 </li>
