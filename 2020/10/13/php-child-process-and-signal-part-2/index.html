@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="I started learning programming on FreeCodeCamp on January 2019, and on July, I became a back-end developer. This maybe seems kind fast, but actually it’s just because I skipped during the course and s">
-<meta name="keywords" content="blog&#x2F; life &#x2F; beauty">
+  <meta name="description" content="When the signal of forked process doesn’t get successful process from pcntl_wait(), it would stay untils it get processed successfully. (Once gets handled, it would not work for later pcntl_wait())">
+<meta name="keywords" content="PHP,process">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How I Became a Programmer">
-<meta property="og:url" content="http://yoursite.com/2020/02/27/how-i-became-a-programmer/index.html">
+<meta property="og:title" content="PHP Child Process and Signal-Part 2">
+<meta property="og:url" content="http://yoursite.com/2020/10/13/php-child-process-and-signal-part-2/index.html">
 <meta property="og:site_name" content="ShakalakaB Blog">
-<meta property="og:description" content="I started learning programming on FreeCodeCamp on January 2019, and on July, I became a back-end developer. This maybe seems kind fast, but actually it’s just because I skipped during the course and s">
+<meta property="og:description" content="When the signal of forked process doesn’t get successful process from pcntl_wait(), it would stay untils it get processed successfully. (Once gets handled, it would not work for later pcntl_wait())">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-01T13:50:16.621Z">
+<meta property="og:updated_time" content="2020-10-12T16:49:06.884Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How I Became a Programmer">
-<meta name="twitter:description" content="I started learning programming on FreeCodeCamp on January 2019, and on July, I became a back-end developer. This maybe seems kind fast, but actually it’s just because I skipped during the course and s">
+<meta name="twitter:title" content="PHP Child Process and Signal-Part 2">
+<meta name="twitter:description" content="When the signal of forked process doesn’t get successful process from pcntl_wait(), it would stay untils it get processed successfully. (Once gets handled, it would not work for later pcntl_wait())">
 
-<link rel="canonical" href="http://yoursite.com/2020/02/27/how-i-became-a-programmer/">
+<link rel="canonical" href="http://yoursite.com/2020/10/13/php-child-process-and-signal-part-2/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>How I Became a Programmer | ShakalakaB Blog</title>
+  <title>PHP Child Process and Signal-Part 2 | ShakalakaB Blog</title>
   
 
 
@@ -152,7 +152,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/27/how-i-became-a-programmer/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/13/php-child-process-and-signal-part-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -165,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          How I Became a Programmer
+          PHP Child Process and Signal-Part 2
         </h1>
 
         <div class="post-meta">
@@ -174,16 +174,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-02-27 23:26:12" itemprop="dateCreated datePublished" datetime="2020-02-27T23:26:12+08:00">2020-02-27</time>
+              <time title="Created: 2020-10-13 00:11:48 / Modified: 00:49:06" itemprop="dateCreated datePublished" datetime="2020-10-13T00:11:48+08:00">2020-10-13</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-01 21:50:16" itemprop="dateModified" datetime="2020-05-01T21:50:16+08:00">2020-05-01</time>
-              </span>
 
           
 
@@ -196,13 +190,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>I started learning programming on FreeCodeCamp on January 2019, and on July, I became a back-end developer. This maybe seems kind fast, but actually it’s just because I skipped during the course and some luck.<br>When I was in the middle of Data Visualization Course in FreeCodeCamp, I stopped it, and built my first static website 23 work by mimic for job interview. The website gave me the best opportunity to learn at a very fast speed. Once I finished it, I began to look for a job, within one week, I got the back-end job offer.</p>
-<a id="more"></a>
-<p>So, why back-end, not front-end?<br>Well, it’s an coincidence. I always hope to have full-stack capability, and this is the answer I gave in every job interview when asked about career plan. And I also told them my shortcoming is that I would lose patience quickly when things get iterated. Luckily, one manager just get interested by my character and learning speed, so he seriously asked me: you don’t need to wait, I can give you the offer as back-end developer now, but you only have three months to prove to us that this is a right choice for both of us, do you want to take this? I took it. Then I’m a back-end developer now.</p>
-<p>Don’t let the better be the enemy of good. The thing I learned from this experience is: I shouldn’t wait for the perfect moment to act, I don’t need to start next step only when I get everything prepared. When I learned programming on FCC, I always thought it as a step-by-step path, I can only start next course after I get this certificate, I can only start to build my first website when I finished the whole course, I can only start when I seem perfect. No, don’t let this be a reason to postpone to act, don’t let this learning, preparing process be the reason…</p>
-<p>If you feel struggling, it’s ok. When learning programming, I found learning isn’t a linear line, it’s a spiral process. First, you got a problem, search it and get a strange word, struggle through complicated articles, you remember its name. Later, you encounter it again, not afraid this time, and read articles patiently, basically know the how. Then, it pops up again, maybe with some delicate make up, show you the point you miss. You study it one more time. Then it’s not a problem anymore but a toy. Seem like walking with same problem, but every time the known cycle get bigger. This is a typical pattern for me to learn programming.</p>
-<p>I found building the website really helps me grow, it mixes css, js and so much problem I never expects. If we focus too much on the FCC tasks, and geting higher score, then we kind of learn things by memory, not exposed to the real battleground. Then it’s natural to forget what we have memorized.</p>
-<p>The thing they really value is your learning speed and your potential, not how good you are now, for them, no matter how much you have learned on FCC, you are just a newbie who never have real experience. Compared with knowing all answers for every question during interview, it’s more important to show: ‘I don’t know the answer, but it doesn’t matter, I can learn fast, it’s not a problem”. Your confidence would add the chance that they bet on you.</p>
+        <ul>
+<li>When the signal of forked process doesn’t get successful process from <code>pcntl_wait()</code>, it would stay untils it get processed successfully. (Once gets handled, it would not work for later <code>pcntl_wait()</code>)</li>
+</ul>
+<p>In the part 1, I talked about what happens when we kill parent process, then kill the child. In this part, I would talk about what would happen if we kill the process in reverse order.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">pcntl_async_signals(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">pcntl_signal(SIGTERM, <span class="function"><span class="keyword">function</span> <span class="params">($signal, $status)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"inside pcntl_signal\n"</span>;</span><br><span class="line">    $pid = pcntl_wait($processStatus, WUNTRACED);</span><br><span class="line"><span class="comment">//    $pid = pcntl_wait($processStatus, WNOHANG);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pcntl_wifexited($processStatus)) &#123;</span><br><span class="line">        $code = pcntl_wexitstatus($processStatus);</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"pid $pid returned exit code: $code\n "</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"$pid was unnaturally terminated\n "</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    print_r($processStatus);</span></span><br><span class="line"><span class="comment">//    echo "\n";</span></span><br><span class="line"><span class="comment">//    echo "signal: $signal\n";</span></span><br><span class="line"><span class="comment">//    print_r($status);</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">if</span> ($pid = pcntl_fork()) &#123;</span><br><span class="line">    $parent = getmypid();</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"parent: $parent\n"</span>;</span><br><span class="line">    </span><br><span class="line">    sleep(<span class="number">60</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    $childPid = getmypid();</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"child pid: $childPid\n"</span>;</span><br><span class="line"></span><br><span class="line">    sleep(<span class="number">60</span>);</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">Execute the above script, <span class="keyword">and</span> according to the output of process pid, first <span class="keyword">use</span> `<span class="title">kill</span>` <span class="title">command</span> <span class="title">to</span> <span class="title">kill</span> <span class="title">parent</span> <span class="title">process</span>, <span class="title">then</span> <span class="title">kill</span> <span class="title">child</span> <span class="title">process</span>. <span class="title">The</span> <span class="title">total</span> <span class="title">output</span> <span class="title">would</span> <span class="title">be</span> <span class="title">like</span> <span class="title">this</span>:</span><br></pre></td></tr></table></figure>
+
+<p>parent: <parent pid><br>child pid: <child pid><br>inside pcntl_signal<br>pid -1 returned exit code: 0<br>inside pcntl_signal<br>pid <child pid> returned exit code: 0<br>```
+We still create two processes, one parent, one child. Kill the child, and this invokes the signal handler in the child process. However, <code>pcntl_wait()</code> only works when it’s called in parent, so it returns -1. Then, we kill the parent, this time, the <code>pcntl_wait()</code> in parent handles the child process status info successfully. But this raises a noticeble point: the signal which can’t be handled by <code>pcntl_wait()</code> in child process stays until successfully dealed by parent process.</child></child></parent></p>
 
     </div>
 
@@ -211,6 +206,10 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PHP/" rel="tag"># PHP</a>
+              <a href="/tags/process/" rel="tag"># process</a>
+          </div>
 
         
 
@@ -218,13 +217,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/11/02/wo-jiu-zhe-yang-cheng-wei-liao-yi-ming-cheng-xu-yuan/" rel="prev" title="我就这样成为了一名程序员">
-      <i class="fa fa-chevron-left"></i> 我就这样成为了一名程序员
+    <a href="/2020/09/24/php-child-processes-and-signal-part-1/" rel="prev" title="PHP Child Process and Signal-Part 1">
+      <i class="fa fa-chevron-left"></i> PHP Child Process and Signal-Part 1
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/22/remove-duplicate-value-from-nested-associative-array-part-1/" rel="next" title="Remove Duplicate Value from Nested Associative Array: Part 1">
-      Remove Duplicate Value from Nested Associative Array: Part 1 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     

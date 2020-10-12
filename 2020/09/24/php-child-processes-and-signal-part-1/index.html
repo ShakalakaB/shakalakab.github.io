@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="ShakalakaB Blog">
 <meta property="og:description" content="PHP: no native support for multithreads Alternative:pcntl_fork() create child processes Reap child processes: pcntl_wait() and pcntl_signal()  pcntl_wait() can only handles the status of child proces">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-10-11T17:07:21.139Z">
+<meta property="og:updated_time" content="2020-10-12T16:46:20.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP Child Process and Signal-Part 1">
 <meta name="twitter:description" content="PHP: no native support for multithreads Alternative:pcntl_fork() create child processes Reap child processes: pcntl_wait() and pcntl_signal()  pcntl_wait() can only handles the status of child proces">
@@ -182,7 +182,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-10-12 01:07:21" itemprop="dateModified" datetime="2020-10-12T01:07:21+08:00">2020-10-12</time>
+                <time title="Modified: 2020-10-13 00:46:20" itemprop="dateModified" datetime="2020-10-13T00:46:20+08:00">2020-10-13</time>
               </span>
 
           
@@ -227,7 +227,7 @@ child pid: &lt;child pid&gt;
 inside pcntl_signal  //shows when parent gets killed
 inside pcntl_signal //shows when child gets killed
 pid -1 returned exit code: 0
-pid &lt;child pid&gt; returned exit code: 0</code></pre><p>So what happened? First we execute the script, it create a parent process and a child. Then we kill parent, which send a SIGINT signal, it invokes the signal handler in parent process. So we get the first ‘inside pcntl_signal’, and because <code>pcntl_wait</code> only works for forked processes, so it can’t handle the signal of parent. The parameter in <code>pcntl_wait</code> is ‘WUNTRACED’, which means it would wait until it gets a valid signal from the child.<br>Then we kill the child process, once again, it invokes signal handler. But why there are two lines of  ‘pid * returned exit code *’? Because the <code>pcntl_wait</code> in parent is working. ‘pid -1 returned exit code: 0’ is returned from child process, cause <code>pcntl_wait()</code> has no effect when called in child. The <code>pcntl_wait()</code> in parent successfully detects the exit of child process.</p>
+pid &lt;child pid&gt; returned exit code: 0</code></pre><p>So what happened? First we execute the script, it creates a parent process and a child. Then we kill the parent, which sends a SIGINT signal, and this signal invokes the signal handler in parent process. So we get the first ‘inside pcntl_signal’, and because <code>pcntl_wait</code> only works for forked processes, so it can’t handle the signal of parent. The parameter in <code>pcntl_wait</code> is ‘WUNTRACED’, which means it would wait until it gets a valid signal from the child.<br>Then we kill the child process, once again, this invokes signal handler. But why there are two lines of  ‘pid * returned exit code *’? Because the <code>pcntl_wait</code> in parent is working. ‘pid -1 returned exit code: 0’ is returned from child process, cause <code>pcntl_wait()</code> has no effect when called in child. The <code>pcntl_wait()</code> in parent successfully detects the exit of child process.</p>
 <p>So what would happen if we kill child first, then kill the parent?</p>
 
     </div>
@@ -251,7 +251,10 @@ pid &lt;child pid&gt; returned exit code: 0</code></pre><p>So what happened? Fir
     <a href="/2020/07/08/docker-php-nginx/" rel="prev" title="Docker+PHP+Nginx">
       <i class="fa fa-chevron-left"></i> Docker+PHP+Nginx
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/13/php-child-process-and-signal-part-2/" rel="next" title="PHP Child Process and Signal-Part 2">
+      PHP Child Process and Signal-Part 2 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -324,7 +327,7 @@ pid &lt;child pid&gt; returned exit code: 0</code></pre><p>So what happened? Fir
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
